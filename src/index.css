@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 97%;
+    --foreground: 222 20% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 20% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 20% 11%;
+    --primary: 220 76% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 222 20% 11%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 222 10% 45%;
+    --accent: 240 5% 94%;
+    --accent-foreground: 222 20% 11%;
+    --destructive: 0 78% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 220 76% 52%;
+    --chart-1: 220 76% 52%;
+    --chart-2: 142 64% 42%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 78% 58%;
+    --radius: 0.75rem;
+    --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 220 76% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 220 76% 52%;
+  }
+
+  .dark {
+    --background: 222 24% 8%;
+    --foreground: 210 20% 96%;
+    --card: 222 22% 11%;
+    --card-foreground: 210 20% 96%;
+    --popover: 222 22% 11%;
+    --popover-foreground: 210 20% 96%;
+    --primary: 220 76% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 18% 16%;
+    --secondary-foreground: 210 20% 96%;
+    --muted: 222 18% 16%;
+    --muted-foreground: 215 12% 60%;
+    --accent: 222 18% 18%;
+    --accent-foreground: 210 20% 96%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 16% 18%;
+    --input: 222 16% 18%;
+    --ring: 220 76% 60%;
+    --chart-1: 220 70% 55%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 222 24% 10%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 220 76% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 18% 16%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 222 16% 18%;
+    --sidebar-ring: 220 76% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@layer components {
+  .frosted {
+    @apply rounded-3xl bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 shadow-sm;
+  }
+
+  button, a, [role="tab"], [role="button"], nav, .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
