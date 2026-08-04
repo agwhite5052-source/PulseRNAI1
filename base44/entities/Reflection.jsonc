@@ -1,0 +1,25 @@
+{
+  "name": "Reflection",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "summary",
+        "reflection",
+        "executive"
+      ],
+      "default": "reflection"
+    },
+    "journal_entry_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "content",
+    "type"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "name": "CheckIn",
+  "type": "object",
+  "properties": {
+    "nurse_name": {
+      "type": "string"
+    },
+    "stress_level": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 5
+    },
+    "sleep_quality": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 7
+    },
+    "fatigue_level": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 4
+    },
+    "mood": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "neutral",
+        "negative",
+        "very_negative"
+      ],
+      "default": "neutral"
+    },
+    "missed_breaks": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "patient_load": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 5
+    },
+    "emotional_fatigue": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 4
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "stress_level",
+    "sleep_quality",
+    "fatigue_level"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Shift",
+  "type": "object",
+  "properties": {
+    "nurse_name": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "hours": {
+      "type": "number",
+      "minimum": 0
+    },
+    "overtime_hours": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "is_overtime": {
+      "type": "boolean",
+      "default": false
+    },
+    "consecutive_days": {
+      "type": "number",
+      "minimum": 0,
+      "default": 1
+    },
+    "missed_breaks": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "patient_load": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 5
+    }
+  },
+  "required": [
+    "date",
+    "hours"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

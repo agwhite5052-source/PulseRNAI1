@@ -1,0 +1,82 @@
+{
+  "name": "ShiftPreference",
+  "type": "object",
+  "properties": {
+    "nurse_name": {
+      "type": "string"
+    },
+    "week_starting": {
+      "type": "string",
+      "format": "date"
+    },
+    "preferred_shift": {
+      "type": "string",
+      "enum": [
+        "day",
+        "evening",
+        "night",
+        "rotating"
+      ],
+      "default": "day"
+    },
+    "preferred_days_off": {
+      "type": "string"
+    },
+    "max_consecutive": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 7,
+      "default": 4
+    },
+    "avoid_overtime": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "nurse_name",
+    "week_starting"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

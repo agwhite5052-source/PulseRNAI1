@@ -1,0 +1,53 @@
+{
+  "name": "Feedback",
+  "type": "object",
+  "properties": {
+    "theme": {
+      "type": "string",
+      "enum": [
+        "workload",
+        "breaks",
+        "staffing",
+        "leadership",
+        "scheduling",
+        "culture",
+        "other"
+      ],
+      "default": "other"
+    },
+    "content": {
+      "type": "string"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "neutral",
+        "negative"
+      ],
+      "default": "neutral"
+    }
+  },
+  "required": [
+    "content",
+    "theme"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
