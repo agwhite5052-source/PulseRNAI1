@@ -22,18 +22,60 @@ export default function ManagerDashboard() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    async function load() {
-      try {
-        const res = await db.functions.invoke('GetManagerInsights', {});
-        setData(res.data);
-      } catch (e) {
-        setError('Could not load manager insights.');
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-  }, []);
+  const mockData = {
+    nurseCount: 42,
+    burnoutDistribution: [
+      { level: "Low", value: 18 },
+      { level: "Moderate", value: 14 },
+      { level: "Elevated", value: 7 },
+      { level: "High", value: 3 },
+    ],
+    wellnessTrend: [
+      { month: "Jan", avgScore: 4.2 },
+      { month: "Feb", avgScore: 4.5 },
+      { month: "Mar", avgScore: 4.8 },
+      { month: "Apr", avgScore: 5.1 },
+    ],
+    fatigueTrend: [
+      { month: "Jan", fatigue: 4.1 },
+      { month: "Feb", fatigue: 4.6 },
+      { month: "Mar", fatigue: 5.2 },
+      { month: "Apr", fatigue: 5.0 },
+    ],
+    overtimeTrend: [
+      { month: "Jan", overtimeHours: 22, overtimeShifts: 8 },
+      { month: "Feb", overtimeHours: 31, overtimeShifts: 12 },
+      { month: "Mar", overtimeHours: 28, overtimeShifts: 10 },
+      { month: "Apr", overtimeHours: 36, overtimeShifts: 14 },
+    ],
+    staffingPressure: [
+      { month: "Jan", avgPatientLoad: 5.4 },
+      { month: "Feb", avgPatientLoad: 5.8 },
+      { month: "Mar", avgPatientLoad: 6.2 },
+      { month: "Apr", avgPatientLoad: 5.9 },
+    ],
+    feedbackThemes: [
+      { name: "Staffing", value: 12 },
+      { name: "Scheduling", value: 9 },
+      { name: "Burnout", value: 7 },
+      { name: "Communication", value: 5 },
+    ],
+    retentionRisk: {
+      atRisk: 8,
+      total: 42,
+      rate: 19,
+    },
+    schedulePreferences: [],
+    interventions: [
+      "Review weekend staffing levels.",
+      "Encourage wellness check-ins for high-risk staff.",
+      "Reduce overtime assignments where possible.",
+    ],
+  };
+
+  setData(mockData);
+  setLoading(false);
+}, []);
 
   if (loading) {
     return (
